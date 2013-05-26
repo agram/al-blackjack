@@ -1,0 +1,17 @@
+#hit_form {
+  float: left;
+  margin-right: 10px;
+}
+
+#stay_form {
+  float: left;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  display: inline;
+  margin-right: 2px;
+}
