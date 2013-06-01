@@ -7,14 +7,14 @@
   <% end %>
 </p>
 
-<form action="/bet" method="post">
+<form action="/bet" method="post" >
   <% unless session[:player_pot] == 0 %>
     <input type="text" name="bet_amount" autocomplete="off" />
     <hr />
-    <input type="submit" value="Make a bet" class="btn btn-inverse" />
+    <input type="submit" class="btn btn-inverse" value="Make a Bet" />
   <% else %>
     <input type="text" name="bet_amount" autocomplete="off" disabled />
     <hr />
-    <input type="submit" value="Make a bet" class="btn btn-inverse" disabled />
+    <input type="submit" class="btn btn-inverse" disabled value="Make a Bet" />
   <% end %>
 </form>
