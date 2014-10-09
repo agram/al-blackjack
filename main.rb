@@ -112,7 +112,7 @@ post '/bet' do
   elsif params[:bet_amount].to_i > session[:player_pot]
     @error = "Bet amount cannot be greater than $#{session[:player_pot]}."
     halt erb(:bet)
-  # End Error Checking  
+  # End Error Checking
   else  # Everything OK
     session[:player_bet] = params[:bet_amount].to_i
     redirect '/game'
@@ -134,12 +134,12 @@ get '/game' do
   session[:player_cards] << session[:deck].pop
   session[:dealer_cards] << session[:deck].pop
   session[:player_cards] << session[:deck].pop
-  
+
   erb :game
 end
 
 post '/game/player/hit' do
-  session[:player_cards] << session[:deck].pop
+
   player_total = calculate_total(session[:player_cards])
 
   if player_total == BLACKJACK_AMOUNT
@@ -148,6 +148,11 @@ post '/game/player/hit' do
   elsif player_total > BLACKJACK_AMOUNT
     loser!("It looks like #{session[:player_name]} busted at #{player_total}.")
   end
+
+  session[:player_cards] << session[:deck].pop
+
+
+
 
   erb :game, layout: false
 end
@@ -188,7 +193,7 @@ end
 
 get '/game/compare' do
   @show_hit_or_stay_buttons = false
-  
+
   player_total = calculate_total(session[:player_cards])
   dealer_total = calculate_total(session[:dealer_cards])
 
